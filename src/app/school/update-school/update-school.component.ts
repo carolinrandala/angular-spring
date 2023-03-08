@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {readBooleanType} from "@angular/compiler-cli/src/ngtsc/metadata/src/util";
+
 
 @Component({
   selector: 'app-update-school',
@@ -8,6 +8,7 @@ import {readBooleanType} from "@angular/compiler-cli/src/ngtsc/metadata/src/util
 })
 export class UpdateSchoolComponent implements OnInit{
   ngOnInit(): void {
+
   }
 
   displayedColumns: string[] = ['id','name', 'address', 'phone', 'isActive'];
