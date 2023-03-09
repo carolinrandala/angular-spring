@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {RouterModule, Routes} from "@angular/router";
 import {SchoolDashboardComponent} from "../school/school-dashboard/school-dashboard.component";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatTableModule} from "@angular/material/table";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {SchoolModule} from "../school/school.module";
 import {AppInterceptor} from "./shared/interceptor/app.interceptor";
