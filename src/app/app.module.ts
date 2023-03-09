@@ -7,6 +7,9 @@ import {RouterModule, Routes} from "@angular/router";
 import {SchoolDashboardComponent} from "../school/school-dashboard/school-dashboard.component";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatTableModule} from "@angular/material/table";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {SchoolModule} from "../school/school.module";
+import {AppInterceptor} from "./shared/interceptor/app.interceptor";
 
 const appRoutes: Routes = [
   {
@@ -23,9 +26,14 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
     MatToolbarModule,
-    MatTableModule
+    SchoolModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AppInterceptor,
+    multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
