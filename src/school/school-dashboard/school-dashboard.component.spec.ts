@@ -10,7 +10,7 @@ describe('SchoolDashboardComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ SchoolDashboardComponent ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SchoolDashboardComponent);
     component = fixture.componentInstance;

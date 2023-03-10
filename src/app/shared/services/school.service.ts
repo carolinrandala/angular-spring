@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import {School} from "../models/school";
+import {School} from "../models/School";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SchoolService {
-
   private SCHOOL_BASE_URL = 'school';
 
   constructor(private httpClient: HttpClient) { }
@@ -20,5 +19,11 @@ export class SchoolService {
     return this.httpClient.get<School>(this.SCHOOL_BASE_URL + '/' + id);
   }
 
+  public deleteSchoolById(id: number): Observable<any> {
+    return this.httpClient.get<any>(this.SCHOOL_BASE_URL + '/delete/' + id);
+  }
 
+  public restoreSchoolById(id: number): Observable<any> {
+    return this.httpClient.get<any>(this.SCHOOL_BASE_URL + '/restore/' + id);
+  }
 }
