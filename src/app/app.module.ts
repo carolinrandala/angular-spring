@@ -24,9 +24,6 @@ const appRoutes: Routes = [
   { path: 'create',
     component: CreateSchoolComponent
   },
-  { path: 'update',
-    component: UpdateSchoolComponent
-  },
   { path: 'view-school',
     component: ViewSchoolComponent
   }
