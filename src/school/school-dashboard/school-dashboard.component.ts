@@ -7,14 +7,17 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {MessageSnackbarComponent} from "../../app/message-snackbar/message-snackbar.component";
 
 
+
 @Component({
   selector: 'app-school-dashboard',
   templateUrl: './school-dashboard.component.html',
   styleUrls: ['./school-dashboard.component.css']
 })
-export class SchoolDashboardComponent implements OnInit{
+export class SchoolDashboardComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'address', 'phone', 'active'];
   dataSource: School[] = [];
+
+  schools: School[] = [];
   message: Message;
   durationInSeconds = 5;
 
@@ -25,7 +28,7 @@ export class SchoolDashboardComponent implements OnInit{
     this.schoolService.getAllSchools().subscribe(value => {
         this.dataSource = value;
 
-        if(value.length == 0) {
+        if (value.length == 0) {
           this.message = new Message(MessageType.info, "No schools found!");
           this.openSnackBar();
         }
@@ -43,19 +46,63 @@ export class SchoolDashboardComponent implements OnInit{
     });
   }
 
-  deleteSchool(id: number) : void {
-    this.schoolService.deleteSchoolById(id).subscribe(value => {this.ngOnInit()},
+  deleteSchool(id: number): void {
+    this.schoolService.deleteSchoolById(id).subscribe(value => {
+        this.ngOnInit()
+      },
       error1 => {
         this.message = new Message(MessageType.error, "Technical Error!");
         this.openSnackBar();
       });
   }
 
-  restoreSchool(id: number) : void {
-    this.schoolService.restoreSchoolById(id).subscribe(value => {this.ngOnInit()},
+  restoreSchool(id: number): void {
+    this.schoolService.restoreSchoolById(id).subscribe(value => {
+        this.ngOnInit()
+      },
       error1 => {
         this.message = new Message(MessageType.error, "Technical Error!");
         this.openSnackBar();
       });
   }
+
+
+  updateSchoolById(id: number): void {
+    this.schoolService.updateSchoolById(id).subscribe(
+      () => {
+        this.message = new Message(MessageType.success, "School updated successfully!");
+        this.openSnackBar();
+        this.ngOnInit();
+      },
+      (error) => {
+        console.log(error)
+        this.message = new Message(MessageType.error, "Technical Error!");
+        this.openSnackBar();
+      }
+    );
+  }
+
+
+
+
+  createSchool(school: School): void {
+    this.schoolService.createSchool(school).subscribe(value => {
+      this.ngOnInit();
+    }, error => {
+      this.message = new Message(MessageType.error, "Technical Error!");
+      this.openSnackBar();
+    });
+  }
+
+
+
+  updateSchool(school: School): void {
+    this.schoolService.updateSchoolById(school.id).subscribe(value => {
+      this.ngOnInit();
+    }, error => {
+      this.message = new Message(MessageType.error, "Technical Error!");
+      this.openSnackBar();
+    });
+  }
+
 }

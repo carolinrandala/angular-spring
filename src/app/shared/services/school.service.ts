@@ -26,4 +26,21 @@ export class SchoolService {
   public restoreSchoolById(id: number): Observable<any> {
     return this.httpClient.get<any>(this.SCHOOL_BASE_URL + '/restore/' + id);
   }
+
+
+  public updateSchoolById(id: number): Observable<any> {
+    return this.httpClient.get<any>(this.SCHOOL_BASE_URL + '/update/' + id);
+  }
+
+  public createSchool(schoolData: any): Observable<any> {
+    return this.httpClient.post<any>(this.SCHOOL_BASE_URL + '/create', schoolData);
+
+  }
+
+
+  public viewUpdateSchool(id: number): Observable<any> {
+    return this.httpClient.get<any>(this.SCHOOL_BASE_URL + '/update/');
+  }
+
+
 }

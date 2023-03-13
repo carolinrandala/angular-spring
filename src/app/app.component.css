@@ -24,6 +24,10 @@ p {
 .spacer {
   padding-left: 50px;
 }
+.spacer-2 {
+  padding-left: 50px;
+}
+
 
 .toolbar {
   position: absolute;

@@ -12,17 +12,30 @@ import {AppInterceptor} from "./shared/interceptor/app.interceptor";
 import { MessageSnackbarComponent } from './message-snackbar/message-snackbar.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatButtonModule} from "@angular/material/button";
+import {CreateSchoolComponent} from "../school/create-school/create-school.component";
+import {UpdateSchoolComponent} from "../school/update-school/update-school.component";
+import {ViewSchoolComponent} from "../school/view-school/view-school.component";
 
 const appRoutes: Routes = [
   {
     path: 'school',
     component: SchoolDashboardComponent
+  },
+  { path: 'create',
+    component: CreateSchoolComponent
+  },
+  { path: 'update',
+    component: UpdateSchoolComponent
+  },
+  { path: 'view-school',
+    component: ViewSchoolComponent
   }
 ]
 @NgModule({
   declarations: [
     AppComponent,
-    MessageSnackbarComponent
+    MessageSnackbarComponent,
+
   ],
   imports: [
     BrowserModule,
