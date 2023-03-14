@@ -16,7 +16,7 @@ export class SchoolService {
   }
 
   public getSchoolById(id: number): Observable<School> {
-    return this.httpClient.get<School>(this.SCHOOL_BASE_URL + '/' + id);
+    return this.httpClient.get<any>(this.SCHOOL_BASE_URL + '/' + id);
   }
 
   public deleteSchoolById(id: number): Observable<any> {
@@ -28,7 +28,7 @@ export class SchoolService {
   }
 
 
-  public updateSchoolById(id: number): Observable<School> {
+  public updateSchoolById(id: number): Observable<any> {
     return this.httpClient.get<any>(this.SCHOOL_BASE_URL + '/update/' + id);
   }
 
