@@ -13,8 +13,8 @@ import { MessageSnackbarComponent } from './message-snackbar/message-snackbar.co
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatButtonModule} from "@angular/material/button";
 import {CreateSchoolComponent} from "../school/create-school/create-school.component";
-import {UpdateSchoolComponent} from "../school/update-school/update-school.component";
 import {ViewSchoolComponent} from "../school/view-school/view-school.component";
+import {UpdateSchoolComponent} from "../school/update-school/update-school.component";
 
 const appRoutes: Routes = [
   {
@@ -23,6 +23,9 @@ const appRoutes: Routes = [
   },
   { path: 'create',
     component: CreateSchoolComponent
+  },
+  { path: 'update',
+    component: UpdateSchoolComponent
   },
   { path: 'view-school',
     component: ViewSchoolComponent

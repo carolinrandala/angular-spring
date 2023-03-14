@@ -16,8 +16,7 @@ import {MessageSnackbarComponent} from "../../app/message-snackbar/message-snack
 export class SchoolDashboardComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'address', 'phone', 'active'];
   dataSource: School[] = [];
-
-  schools: School[] = [];
+  school: School;
   message: Message;
   durationInSeconds = 5;
 
@@ -44,6 +43,16 @@ export class SchoolDashboardComponent implements OnInit {
       duration: this.durationInSeconds * 1000,
       data: this.message
     });
+  }
+
+  getSchoolById(id: number): void {
+    this.schoolService.getSchoolById(id).subscribe(value => {
+        this.ngOnInit()
+      },
+      error1 => {
+        this.message = new Message(MessageType.error, "Technical Error!");
+        this.openSnackBar();
+      });
   }
 
   deleteSchool(id: number): void {
@@ -82,10 +91,7 @@ export class SchoolDashboardComponent implements OnInit {
     );
   }
 
-
-
-
-  createSchool(school: School): void {
+  createSchool(school: any): void {
     this.schoolService.createSchool(school).subscribe(value => {
       this.ngOnInit();
     }, error => {

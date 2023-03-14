@@ -4,6 +4,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 
+
+
 @Component({
   selector: 'app-create-school',
   templateUrl: './create-school.component.html',
@@ -11,7 +13,6 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class CreateSchoolComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'address', 'phone'];
 
   constructor(private schoolService: SchoolService, private _snackBar: MatSnackBar) {
   }
@@ -20,25 +21,22 @@ export class CreateSchoolComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const newSchool: { address: string; phone: string; name: string } = {
+    const school: {address: string; phone: string; name: string } = {
       address: '',
       phone: '',
       name: ''
     };
 
-    this.schoolService.createSchool(newSchool)
+    this.schoolService.createSchool(school)
       .subscribe(
         response => {
           console.log('School created:', response);
         },
         error => {
-          console.log(newSchool);
+          console.log(school);
 
         }
       );
   }
 }
-
-
-
 
