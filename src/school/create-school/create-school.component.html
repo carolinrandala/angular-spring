@@ -1,6 +1,6 @@
 
 <h1>Create new school</h1>
-<form class="example-form" method="post" action="/create" >
+<form class="example-form" (submit)="onSubmit()">
 
   <table class="example-full-width" cellspacing="0"><tr>
     <td><mat-form-field class="example-full-width">
@@ -20,8 +20,7 @@
     </mat-form-field></td>
   </tr></table>
 
-  <button mat-flat-button type="submit" >Submit</button>
+  <button mat-flat-button type="submit">Submit</button>
   <a class="mat-icon-button" href="/school" role="button">Cancel</a>
-
 </form>
 

@@ -79,18 +79,12 @@ export class SchoolDashboardComponent implements OnInit {
   updateSchoolById(id: number): void {
     this.schoolService.updateSchoolById(id).subscribe(
       value => {
-        this.dataSource = value;
-
-        if (value.length == 0) {
-          this.message = new Message(MessageType.info, "No schools found!");
-          this.openSnackBar();
-        }
+        this.ngOnInit()
       },
-      (error) => {
-        console.log(error)
-
-      }
-    );
+      error1 => {
+        this.message = new Message(MessageType.error, "Technical Error!");
+        this.openSnackBar();
+      });
   }
 
 
@@ -103,4 +97,13 @@ export class SchoolDashboardComponent implements OnInit {
     });
   }
 
+  createSchool(school: School): void {
+    this.schoolService.createSchool(school).subscribe(value => {
+      this.ngOnInit();
+    }, error => {
+      this.message = new Message(MessageType.error, "Technical Error!");
+      this.openSnackBar();
+    });
+
+  }
 }

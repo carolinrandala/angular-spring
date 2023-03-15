@@ -1,11 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SchoolService} from "../../app/shared/services/school.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
-
-
-
-
-
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-create-school',
@@ -14,35 +9,13 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class CreateSchoolComponent implements OnInit {
 
+  constructor(private http: HttpClient, private schoolService: SchoolService) { }
 
-  constructor(private schoolService: SchoolService, private _snackBar: MatSnackBar) {
+  onSubmit() {
+
   }
 
   ngOnInit(): void {
-  }
 
-  onSubmit(): void {
-    const school: {address: string; phone: string; name: string } = {
-      address: '',
-      phone: '',
-      name: ''
-    };
-
-    this.schoolService.createSchool(school)
-      .subscribe(
-        response => {
-          console.log('School created:', response);
-        },
-        error => {
-          console.log(school);
-
-        }
-      );
-  }
-  createSchool(school: any): void {
-    this.schoolService.createSchool(school).subscribe(value => {
-      this.ngOnInit();
-    });
   }
 }
-

@@ -32,6 +32,8 @@ export class SchoolService {
     return this.httpClient.get<any>(this.SCHOOL_BASE_URL + '/update/' + id);
   }
 
+
+
   public createSchool(school: any): Observable<School> {
     return this.httpClient.post<any>(this.SCHOOL_BASE_URL + '/create', school);
 
