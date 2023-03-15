@@ -6,6 +6,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 
+
 @Component({
   selector: 'app-create-school',
   templateUrl: './create-school.component.html',
@@ -37,6 +38,11 @@ export class CreateSchoolComponent implements OnInit {
 
         }
       );
+  }
+  createSchool(school: any): void {
+    this.schoolService.createSchool(school).subscribe(value => {
+      this.ngOnInit();
+    });
   }
 }
 

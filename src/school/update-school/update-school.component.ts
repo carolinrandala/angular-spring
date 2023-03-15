@@ -13,15 +13,10 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   templateUrl: './update-school.component.html',
   styleUrls: ['./update-school.component.css']
 })
-export class UpdateSchoolComponent implements OnInit{
+export class UpdateSchoolComponent {
 
-  constructor(private schoolService: SchoolService, private _snackBar: MatSnackBar) {
+  constructor( private schoolService: SchoolService, private _snackBar: MatSnackBar) {
   }
-
-  ngOnInit(): void {
-
-  }
-
 
 
 

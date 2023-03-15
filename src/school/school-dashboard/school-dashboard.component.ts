@@ -16,7 +16,7 @@ import {MessageSnackbarComponent} from "../../app/message-snackbar/message-snack
 export class SchoolDashboardComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'address', 'phone', 'active'];
   dataSource: School[] = [];
-  school: School;
+  school: School[];
   message: Message;
   durationInSeconds = 5;
 
@@ -78,28 +78,20 @@ export class SchoolDashboardComponent implements OnInit {
 
   updateSchoolById(id: number): void {
     this.schoolService.updateSchoolById(id).subscribe(
-      () => {
-        this.message = new Message(MessageType.success, "School updated successfully!");
-        this.openSnackBar();
-        this.ngOnInit();
+      value => {
+        this.dataSource = value;
+
+        if (value.length == 0) {
+          this.message = new Message(MessageType.info, "No schools found!");
+          this.openSnackBar();
+        }
       },
       (error) => {
         console.log(error)
-        this.message = new Message(MessageType.error, "Technical Error!");
-        this.openSnackBar();
+
       }
     );
   }
-
-  createSchool(school: any): void {
-    this.schoolService.createSchool(school).subscribe(value => {
-      this.ngOnInit();
-    }, error => {
-      this.message = new Message(MessageType.error, "Technical Error!");
-      this.openSnackBar();
-    });
-  }
-
 
 
   updateSchool(school: School): void {
