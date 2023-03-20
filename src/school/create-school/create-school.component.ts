@@ -1,6 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {SchoolService} from "../../app/shared/services/school.service";
-import {HttpClient} from "@angular/common/http";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {FormBuilder, FormGroup} from "@angular/forms";
+
+
+
 
 @Component({
   selector: 'app-create-school',
@@ -9,13 +13,39 @@ import {HttpClient} from "@angular/common/http";
 })
 export class CreateSchoolComponent implements OnInit {
 
-  constructor(private http: HttpClient, private schoolService: SchoolService) { }
-
-  onSubmit() {
-
+  constructor(private snackBar: MatSnackBar, private formBuilder: FormBuilder, private schoolService: SchoolService) {
   }
+
+  newSchool: FormGroup;
+
 
   ngOnInit(): void {
+    this.newSchool = this.formBuilder.group({
+      name: '',
+      address: '',
+      phone: ''
+    });
+  }
 
+  onSubmit() {
+    console.log(this.newSchool.value);
+
+    this.schoolService.createSchool(this.newSchool).subscribe(
+      result => {
+
+        this.snackBar.open('New school created successfully', 'OK', {
+          duration: 3000
+        });
+
+        this.newSchool.reset();
+      },
+      error => {
+
+        this.snackBar.open('Error creating new school', 'OK', {
+          duration: 3000
+        });
+      }
+    );
   }
 }
+

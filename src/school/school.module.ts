@@ -9,7 +9,7 @@ import { UpdateSchoolComponent } from './update-school/update-school.component';
 import { ViewSchoolComponent } from './view-school/view-school.component';
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {MatInputModule} from "@angular/material/input";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import {FormsModule} from "@angular/forms";
         RouterLink,
         RouterLinkActive,
         MatInputModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ]
 })
 export class SchoolModule { }

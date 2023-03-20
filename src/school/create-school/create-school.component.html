@@ -1,26 +1,25 @@
 
 <h1>Create new school</h1>
-<form class="example-form" (submit)="onSubmit()">
-
+<form class="example-form" [formGroup]="newSchool" >
   <table class="example-full-width" cellspacing="0"><tr>
     <td><mat-form-field class="example-full-width">
       <mat-label>School name</mat-label>
-      <input matInput name="name"  required>
+      <input formControlName="name" matInput type="text" required>
     </mat-form-field></td>
     <br/>
     <br/>
     <td><mat-form-field class="example-full-width">
       <mat-label>School's address:</mat-label>
-      <input matInput name="address" required>
+      <input formControlName="address" matInput type="text" required>
     </mat-form-field></td>
     <br/>
     <td><mat-form-field class="example-full-width">
       <mat-label>School's phone:</mat-label>
-      <input matInput name="phone" required>
+      <input formControlName="phone" matInput type="text" required>
     </mat-form-field></td>
   </tr></table>
 
-  <button mat-flat-button type="submit">Submit</button>
+  <button mat-flat-button color="primary" (click)="onSubmit()">Submit</button>
   <a class="mat-icon-button" href="/school" role="button">Cancel</a>
 </form>
 

@@ -76,34 +76,14 @@ export class SchoolDashboardComponent implements OnInit {
   }
 
 
-  updateSchoolById(id: number): void {
-    this.schoolService.updateSchoolById(id).subscribe(
-      value => {
-        this.ngOnInit()
-      },
-      error1 => {
-        this.message = new Message(MessageType.error, "Technical Error!");
-        this.openSnackBar();
-      });
-  }
 
-
-  updateSchool(school: School): void {
-    this.schoolService.updateSchoolById(school.id).subscribe(value => {
+  updateSchool(id: number): void {
+    this.schoolService.updateSchoolById(id).subscribe(value => {
       this.ngOnInit();
     }, error => {
       this.message = new Message(MessageType.error, "Technical Error!");
       this.openSnackBar();
     });
-  }
-
-  createSchool(school: School): void {
-    this.schoolService.createSchool(school).subscribe(value => {
-      this.ngOnInit();
-    }, error => {
-      this.message = new Message(MessageType.error, "Technical Error!");
-      this.openSnackBar();
-    });
-
   }
 }
+

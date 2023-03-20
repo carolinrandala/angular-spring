@@ -29,14 +29,16 @@ export class SchoolService {
 
 
   public updateSchoolById(id: number): Observable<any> {
-    return this.httpClient.get<any>(this.SCHOOL_BASE_URL + '/update/' + id);
+    return this.httpClient.get<any>(this.SCHOOL_BASE_URL + '/update/'+ id);
+  }
+
+  public updateSchool(school: any): Observable<any> {
+    return this.httpClient.get<any>(this.SCHOOL_BASE_URL + '/update/', school);
   }
 
 
-
-  public createSchool(school: any): Observable<School> {
+  public createSchool(school: any): Observable<any> {
     return this.httpClient.post<any>(this.SCHOOL_BASE_URL + '/create', school);
-
   }
 
 
