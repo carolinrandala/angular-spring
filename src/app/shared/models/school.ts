@@ -17,4 +17,5 @@ export class School {
     this.createdDate = createdDate;
     this.lastModifiedDate = lastModifiedDate;
   }
+
 }

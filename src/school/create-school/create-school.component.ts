@@ -28,9 +28,7 @@ export class CreateSchoolComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.newSchool.value);
-
-    this.schoolService.createSchool(this.newSchool).subscribe(
+    this.schoolService.createSchool(this.newSchool.value).subscribe(
       result => {
 
         this.snackBar.open('New school created successfully', 'OK', {
