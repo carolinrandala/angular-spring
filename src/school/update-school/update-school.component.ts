@@ -26,7 +26,7 @@ export class UpdateSchoolComponent implements OnInit{
   onSubmit() {
     console.log(this.updateSchool.value);
 
-    this.schoolService.updateSchool(this.updateSchool).subscribe(
+    this.schoolService.updateSchoolById(this.updateSchool.value).subscribe(
       result => {
 
         this.snackBar.open('School has successfully updated', 'OK', {

@@ -15,6 +15,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {CreateSchoolComponent} from "../school/create-school/create-school.component";
 import {ViewSchoolComponent} from "../school/view-school/view-school.component";
 import {UpdateSchoolComponent} from "../school/update-school/update-school.component";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {FormsModule} from "@angular/forms";
 
 const appRoutes: Routes = [
   {
@@ -45,7 +47,9 @@ const appRoutes: Routes = [
     SchoolModule,
     HttpClientModule,
     MatSnackBarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    FormsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

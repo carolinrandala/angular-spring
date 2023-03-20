@@ -42,6 +42,7 @@ export class CreateSchoolComponent implements OnInit {
         this.snackBar.open('Error creating new school', 'OK', {
           duration: 3000
         });
+        console.log(this.newSchool.value);
       }
     );
   }
